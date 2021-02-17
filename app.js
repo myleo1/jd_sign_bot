@@ -9,7 +9,7 @@ const download = require('download')
 
 // 公共变量
 const KEY = process.env.JD_COOKIE
-const serverJ = process.env.PUSH_KEY
+const serverT = process.env.PUSTOKEN
 
 async function downFile () {
     // const url = 'https://cdn.jsdelivr.net/gh/NobyDa/Script@master/JD-DailyBonus/JD_DailyBonus.js'
@@ -25,9 +25,13 @@ async function changeFiele () {
 
 async function sendNotify (text,desp) {
   const options ={
-    uri:  `https://sc.ftqq.com/${serverJ}.send`,
-    form: { text, desp },
-    json: true,
+    uri:  `https://leom.me:30088/wechat-work-pusher/card`,
+    headers: { 'Cookie': `session=${serverT}`}
+    form: {
+        title: text,
+        description: desp,
+        url: 'https://m.jd.com'
+    },
     method: 'POST'
   }
   await rp.post(options).then(res=>{
@@ -52,7 +56,7 @@ async function start() {
   await exec("node JD_DailyBonus.js >> result.txt");
   console.log('执行完毕')
 
-  if (serverJ) {
+  if (serverT) {
     const path = "./result.txt";
     let content = "";
     if (fs.existsSync(path)) {
