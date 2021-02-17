@@ -9,7 +9,7 @@ const download = require('download')
 
 // 公共变量
 const KEY = process.env.JD_COOKIE
-const serverT = process.env.PUSTOKEN
+const serverT = process.env.PUSH_TOKEN
 
 async function downFile () {
     // const url = 'https://cdn.jsdelivr.net/gh/NobyDa/Script@master/JD-DailyBonus/JD_DailyBonus.js'
