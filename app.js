@@ -30,7 +30,7 @@ async function sendNotify (text,desp) {
     form: {
         title: text,
         description: desp,
-        url: 'https://m.jd.com'
+        url: 'https://home.m.jd.com'
     },
     method: 'POST'
   }
