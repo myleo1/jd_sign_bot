@@ -28,7 +28,9 @@ async function sendNotify (text,desp) {
     uri:  'https://leom.me:30088/wechat-work-pusher/msg',
     headers: { 'Cookie': `session=${serverT}`},
     form: {
-        content: text + '\n' + desp
+        title: text,
+        description: desp,
+        url: 'https://m.jd.com'
     },
     method: 'POST'
   }
@@ -60,7 +62,7 @@ async function start() {
     let trimContent = "";
     if (fs.existsSync(path)) {
       content = fs.readFileSync(path, "utf8");
-      trimContent = content.substring(content.indexOf('【签到概览】'),content.length);
+      trimContent = content.substring(content.indexOf('【签到概览】'),content.indexOf('京东商城-京豆:')-1);
     }
     await sendNotify("京东签到-" + new Date().toLocaleDateString(), trimContent);
     console.log('发送结果完毕')
