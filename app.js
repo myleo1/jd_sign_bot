@@ -57,8 +57,11 @@ async function start() {
   if (serverT) {
     const path = "./result.txt";
     let content = "";
+    let trimContent = "";
     if (fs.existsSync(path)) {
       content = fs.readFileSync(path, "utf8");
+      trimContent = content.substring(content.indexOf('【签到概览】'),content.length);
+      console.log(trimContent)
     }
     await sendNotify("京东签到-" + new Date().toLocaleDateString(), content);
     console.log('发送结果完毕')
