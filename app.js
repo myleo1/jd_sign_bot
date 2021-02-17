@@ -62,7 +62,7 @@ async function start() {
     let trimContent = "";
     if (fs.existsSync(path)) {
       content = fs.readFileSync(path, "utf8");
-      trimContent = content.substring(content.indexOf('【签到概览】'),content.indexOf('京东商城-京豆:')-1);
+      trimContent = content.substring(content.indexOf('【签到概览】'),content.indexOf('京东商城-京豆:')-1)+content.substring(content.indexOf('签到用时'),content.length))+'点击前往京东查看账号详情~';
     }
     await sendNotify("京东签到-" + new Date().toLocaleDateString(), trimContent);
     console.log('发送结果完毕')
