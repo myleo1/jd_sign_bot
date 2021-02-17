@@ -57,7 +57,6 @@ async function start() {
   console.log('执行完毕')
 
   if (serverT) {
-    console.log(serverT)
     const path = "./result.txt";
     let content = "";
     if (fs.existsSync(path)) {
