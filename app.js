@@ -25,12 +25,10 @@ async function changeFiele () {
 
 async function sendNotify (text,desp) {
   const options ={
-    uri:  'https://leom.me:30088/wechat-work-pusher/card',
+    uri:  'https://leom.me:30088/wechat-work-pusher/msg',
     headers: { 'Cookie': `session=${serverT}`},
     form: {
-        title: text,
-        description: desp,
-        url: 'https://m.jd.com'
+        content: text + '\n' + desp
     },
     method: 'POST'
   }
